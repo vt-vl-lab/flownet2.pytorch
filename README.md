@@ -12,7 +12,7 @@ This code has been test with Python3.6 and PyTorch0.3.0, with a Tesla K80 GPU. T
     cd FlowNet2_src
     bash install.sh
 
-Note: you might need to modify [here](), [here](), and [here](), according to the GPU you use.
+Note: you might need to modify [here](https://github.com/vt-vl-lab/pytorch_flownet2/blob/master/FlowNet2_src/models/components/ops/channelnorm/make.sh#L10), [here](https://github.com/vt-vl-lab/pytorch_flownet2/blob/master/FlowNet2_src/models/components/ops/correlation/make.sh#L12), and [here](https://github.com/vt-vl-lab/pytorch_flownet2/blob/master/FlowNet2_src/models/components/ops/resample2d/make.sh#L10), according to the GPU you use.
 
 ### Converted Caffe Pre-trained Models
 * [FlowNet2](https://drive.google.com/file/d/1hF8vS6YeHkx3j2pfCeQqqZGwA_PJq_Da/view?usp=sharing)[620MB]
@@ -24,6 +24,8 @@ Note: you might need to modify [here](), [here](), and [here](), according to th
 * [FlowNet2-SD](https://drive.google.com/file/d/1QW03eyYG_vD-dT-Mx4wopYvtPu_msTKn/view?usp=sharing)[173MB]
 
 ### Inference mode
+First download pre-trained models of FlowNet2 and modify the path, then
+
 ```
 python demo.py
 ```    
