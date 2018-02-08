@@ -1,6 +1,7 @@
 ## FlowNet2 (PyTorch v0.3.0)
 
-Pytorch implementation of [FlowNet 2.0: Evolution of Optical Flow Estimation with Deep Networks](https://arxiv.org/abs/1612.01925). 
+Pytorch implementation of [FlowNet 2.0: Evolution of Optical Flow Estimation with Deep Networks](https://arxiv.org/abs/1612.01925). Most part are from this [repo](https://github.com/NVIDIA/flownet2-pytorch), we made it as a off-the-shelf package:
+- After installation, just copy the whole folder FlowNet2_src to your codebase to use. See demo.py for details.
 
 ### Environment
 
