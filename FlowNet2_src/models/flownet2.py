@@ -107,13 +107,14 @@ class FlowNet2(nn.Module):
         norm_flownets2_flow = self.channelnorm(flownets2_flow)
 
         diff_flownets2_flow = self.resample4(x[:, 3:, :, :], flownets2_flow)
-        if not diff_flownets2_flow.volatile:
+        req_grad = diff_flownets2_flow.requires_grad
+        if req_grad:
             diff_flownets2_flow.register_hook(
                 save_grad(self.grads, 'diff_flownets2_flow'))
 
         diff_flownets2_img1 = self.channelnorm(
             (x[:, :3, :, :] - diff_flownets2_flow))
-        if not diff_flownets2_img1.volatile:
+        if req_grad:
             diff_flownets2_img1.register_hook(
                 save_grad(self.grads, 'diff_flownets2_img1'))
 
@@ -123,13 +124,13 @@ class FlowNet2(nn.Module):
         norm_flownetsd_flow = self.channelnorm(flownetsd_flow)
 
         diff_flownetsd_flow = self.resample3(x[:, 3:, :, :], flownetsd_flow)
-        if not diff_flownetsd_flow.volatile:
+        if req_grad:
             diff_flownetsd_flow.register_hook(
                 save_grad(self.grads, 'diff_flownetsd_flow'))
 
         diff_flownetsd_img1 = self.channelnorm(
             (x[:, :3, :, :] - diff_flownetsd_flow))
-        if not diff_flownetsd_img1.volatile:
+        if req_grad:
             diff_flownetsd_img1.register_hook(
                 save_grad(self.grads, 'diff_flownetsd_img1'))
 
@@ -142,7 +143,7 @@ class FlowNet2(nn.Module):
             dim=1)
         flownetfusion_flow = self.flownetfusion(concat3)
 
-        if not flownetfusion_flow.volatile:
+        if req_grad:
             flownetfusion_flow.register_hook(
                 save_grad(self.grads, 'flownetfusion_flow'))
 

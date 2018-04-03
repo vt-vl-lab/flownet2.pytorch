@@ -1,3 +1,5 @@
+import matplotlib
+matplotlib.use('Agg')
 import numpy as np
 from scipy.misc import imread
 import torch
@@ -15,6 +17,7 @@ if __name__ == '__main__':
   # B x 3(RGB) x 2(pair) x H x W
   ims = np.array([[im1, im2]]).transpose((0, 4, 1, 2, 3)).astype(np.float32)
   ims = torch.from_numpy(ims)
+  print(ims.size())
   ims_v = Variable(ims.cuda(), requires_grad=False)
 
   # Build model
@@ -33,4 +36,4 @@ if __name__ == '__main__':
 
   # Visualization
   plt.imshow(flow_im)
-  plt.show()
+  plt.savefig('flow.png', bbox_inches='tight')
